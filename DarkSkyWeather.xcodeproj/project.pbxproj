@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		4F4FA85424683D41004CFB52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FA85324683D41004CFB52 /* AppDelegate.swift */; };
-		4F4FA85624683D41004CFB52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FA85524683D41004CFB52 /* SceneDelegate.swift */; };
-		4F4FA85824683D41004CFB52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FA85724683D41004CFB52 /* ViewController.swift */; };
 		4F4FA85B24683D41004CFB52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4FA85924683D41004CFB52 /* Main.storyboard */; };
 		4F4FA85D24683D46004CFB52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F4FA85C24683D46004CFB52 /* Assets.xcassets */; };
 		4F4FA86024683D46004CFB52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F4FA85E24683D46004CFB52 /* LaunchScreen.storyboard */; };
 		4F4FA86B24683D46004CFB52 /* DarkSkyWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FA86A24683D46004CFB52 /* DarkSkyWeatherTests.swift */; };
+		4F4FA87724683D88004CFB52 /* DarkSkyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FA87624683D88004CFB52 /* DarkSkyService.swift */; };
+		4F4FA87A24683DD5004CFB52 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FA87924683DD5004CFB52 /* WeatherViewController.swift */; };
+		4F4FA87D24683E14004CFB52 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FA87C24683E14004CFB52 /* WeatherModel.swift */; };
+		4F4FA87F2468424B004CFB52 /* CurrentlyWeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4FA87E2468424B004CFB52 /* CurrentlyWeatherModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,8 +31,6 @@
 /* Begin PBXFileReference section */
 		4F4FA85024683D41004CFB52 /* DarkSkyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DarkSkyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F4FA85324683D41004CFB52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4F4FA85524683D41004CFB52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4F4FA85724683D41004CFB52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4F4FA85A24683D41004CFB52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4F4FA85C24683D46004CFB52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F4FA85F24683D46004CFB52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +38,10 @@
 		4F4FA86624683D46004CFB52 /* DarkSkyWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DarkSkyWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F4FA86A24683D46004CFB52 /* DarkSkyWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyWeatherTests.swift; sourceTree = "<group>"; };
 		4F4FA86C24683D46004CFB52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F4FA87624683D88004CFB52 /* DarkSkyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyService.swift; sourceTree = "<group>"; };
+		4F4FA87924683DD5004CFB52 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		4F4FA87C24683E14004CFB52 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		4F4FA87E2468424B004CFB52 /* CurrentlyWeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentlyWeatherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +83,10 @@
 		4F4FA85224683D41004CFB52 /* DarkSkyWeather */ = {
 			isa = PBXGroup;
 			children = (
+				4F4FA87B24683DDC004CFB52 /* Models */,
+				4F4FA87824683DA3004CFB52 /* ViewControllers */,
+				4F4FA87524683D68004CFB52 /* Services */,
 				4F4FA85324683D41004CFB52 /* AppDelegate.swift */,
-				4F4FA85524683D41004CFB52 /* SceneDelegate.swift */,
-				4F4FA85724683D41004CFB52 /* ViewController.swift */,
 				4F4FA85924683D41004CFB52 /* Main.storyboard */,
 				4F4FA85C24683D46004CFB52 /* Assets.xcassets */,
 				4F4FA85E24683D46004CFB52 /* LaunchScreen.storyboard */,
@@ -97,6 +102,31 @@
 				4F4FA86C24683D46004CFB52 /* Info.plist */,
 			);
 			path = DarkSkyWeatherTests;
+			sourceTree = "<group>";
+		};
+		4F4FA87524683D68004CFB52 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4F4FA87624683D88004CFB52 /* DarkSkyService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4F4FA87824683DA3004CFB52 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4F4FA87924683DD5004CFB52 /* WeatherViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4F4FA87B24683DDC004CFB52 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4F4FA87C24683E14004CFB52 /* WeatherModel.swift */,
+				4F4FA87E2468424B004CFB52 /* CurrentlyWeatherModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,9 +230,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F4FA85824683D41004CFB52 /* ViewController.swift in Sources */,
+				4F4FA87A24683DD5004CFB52 /* WeatherViewController.swift in Sources */,
+				4F4FA87F2468424B004CFB52 /* CurrentlyWeatherModel.swift in Sources */,
+				4F4FA87724683D88004CFB52 /* DarkSkyService.swift in Sources */,
 				4F4FA85424683D41004CFB52 /* AppDelegate.swift in Sources */,
-				4F4FA85624683D41004CFB52 /* SceneDelegate.swift in Sources */,
+				4F4FA87D24683E14004CFB52 /* WeatherModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
