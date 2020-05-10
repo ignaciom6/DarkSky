@@ -10,6 +10,14 @@ import UIKit
 
 class WeatherViewController: UIViewController {
 
+    @IBOutlet var cityName: UILabel!
+    @IBOutlet var temp: UILabel!
+    @IBOutlet var date: UILabel!
+    @IBOutlet var weatherDesc: UILabel!
+    @IBOutlet var windSpeed: UILabel!
+    @IBOutlet var rain: UILabel!
+    @IBOutlet var humidity: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
