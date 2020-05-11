@@ -8,7 +8,6 @@
 
 import Foundation
 
-//https://api.darksky.net/forecast/2bb07c3bece89caf533ac9a5d23d8417/59.337239,18.062381
 
 class DarkSkyService {
     typealias WeatherDataCompletion = (WeatherModel?, Error?) -> ()
@@ -25,25 +24,27 @@ class DarkSkyService {
         urlBuilder.scheme = "https"
         urlBuilder.host = host
         urlBuilder.path = fullPath
+        urlBuilder.queryItems = [URLQueryItem(name: "units", value: "si")]
         
         let url = urlBuilder.url!
         
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             DispatchQueue.main.async {
+                guard error == nil else {
+                    completion(nil, error)
+                    return
+                }
+                
                 guard let data = data else {
                     completion(nil, error)
                     return
                 }
                 
-                if error == nil {
-                    do {
-                        let decoder = JSONDecoder()
-                        let weatherModel: WeatherModel = try decoder.decode(WeatherModel.self, from: data)
-                        completion(weatherModel, error)
-                    } catch {
-                        completion(nil, error)
-                    }
-                } else {
+                do {
+                    let decoder = JSONDecoder()
+                    let weatherModel: WeatherModel = try decoder.decode(WeatherModel.self, from: data)
+                    completion(weatherModel, error)
+                } catch {
                     completion(nil, error)
                 }
             }
