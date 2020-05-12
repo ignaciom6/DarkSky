@@ -9,7 +9,7 @@
 import Foundation
 
 struct CurrentlyWeatherModel: Codable {
-    var time: Double
+    var time: Int
     var summary: String
     var precipProbability: Double
     var temperature: Double

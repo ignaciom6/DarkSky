@@ -10,8 +10,8 @@ import Foundation
 
 class FormatterUtilities: NSObject {
     
-    class func getDateFrom(unix: Double) -> String {
-        let date = Date(timeIntervalSince1970: unix)
+    class func getDateFrom(unix: Int) -> String {
+        let date = Date(timeIntervalSince1970: TimeInterval(unix))
         
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone(abbreviation: "GMT")

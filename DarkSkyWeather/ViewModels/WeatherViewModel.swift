@@ -41,12 +41,7 @@ class WeatherViewModel: NSObject {
         }
     }
     
-}
-
-extension WeatherViewModel: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location: CLLocationCoordinate2D = manager.location?.coordinate else {return}
-        
+    func requestWeatherInfoForLocation(location: CLLocationCoordinate2D) {
         DarkSkyService.weatherForLocation(latitude: location.latitude, longitude: location.longitude) { [weak self] (weatherModelData, error) in
             guard let self = self else {return}
             guard let weatherModelData = weatherModelData
@@ -54,14 +49,27 @@ extension WeatherViewModel: CLLocationManagerDelegate {
                     self.error.value = error?.localizedDescription ?? WeatherViewModel.kError
                     return
             }
-            self.cityNameModel.value = FormatterUtilities.getCityName(cityName: weatherModelData.timezone) 
-            self.tempModel.value = FormatterUtilities.getFormattedTemp(fullTemp: weatherModelData.currently.temperature)
-            self.date.value = FormatterUtilities.getDateFrom(unix: weatherModelData.currently.time)
-            self.weatherDesc.value = weatherModelData.currently.summary
-            self.windSpeed.value = String(weatherModelData.currently.windSpeed)
-            self.rainProb.value = String(weatherModelData.currently.precipProbability)
-            self.humidity.value = String(weatherModelData.currently.humidity)
+            self.setPropertiesValuesFromData(weatherData: weatherModelData)
         }
+    }
+    
+    func setPropertiesValuesFromData(weatherData: WeatherModel) {
+        self.cityNameModel.value = FormatterUtilities.getCityName(cityName: weatherData.timezone)
+        self.tempModel.value = FormatterUtilities.getFormattedTemp(fullTemp: weatherData.currently.temperature)
+        self.date.value = FormatterUtilities.getDateFrom(unix: weatherData.currently.time)
+        self.weatherDesc.value = weatherData.currently.summary
+        self.windSpeed.value = String(weatherData.currently.windSpeed)
+        self.rainProb.value = String(weatherData.currently.precipProbability)
+        self.humidity.value = String(weatherData.currently.humidity)
+    }
+    
+}
+
+extension WeatherViewModel: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location: CLLocationCoordinate2D = manager.location?.coordinate else {return}
+        
+        requestWeatherInfoForLocation(location: location)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

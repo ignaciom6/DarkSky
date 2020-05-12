@@ -11,6 +11,8 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     
+    private let kError = "Error"
+    private let kOK = "OK"
     private let viewModel = WeatherViewModel()
     
     @IBOutlet var cityName: UILabel!
@@ -55,8 +57,8 @@ class WeatherViewController: UIViewController {
         viewModel.error.bind { [weak self] error in
             if !error.isEmpty {
                 DispatchQueue.main.async {
-                    let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+                    let alert = UIAlertController(title: self?.kError, message: error, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: self?.kOK, style: .default, handler: { (UIAlertAction) in
                         self?.dismiss(animated: true, completion: nil)
                     }))
                     self?.present(alert, animated: true, completion: nil)
